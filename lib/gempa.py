@@ -21,13 +21,13 @@ def fetchdata():
     data = urlopen(url).read()
     return data
 
-def getdatagempa(data):
+def get(data):
     s = bs(data)
     data = s.find("div",{"class":"panel panel-default row"})
     return data.text.split()
 
-def get():
-    return getdatagempa(fetchdata())
+def datagempa():
+    return get(fetchdata())
 
 if __name__ == '__main__':
     print get()
