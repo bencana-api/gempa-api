@@ -23,20 +23,6 @@ def fetchdatasoup(data):
 
     return clean
 
-def getgempa():
-    data = fetchdatasoup(fetchdata())
-    return data
-
-def getmagnitude(data):
-    return data[3]
-
-def magdata(data):
-    scale = []
-    for i in range(len(data)):
-        d = getmagnitude(data[i].split().encode('ascii'))
-        scale.append(d)
-    return scale
-
 def rmpnct(data):
     clean = []
     for items in data:
@@ -53,6 +39,24 @@ def getalllocations(data):
         d = rmpnct(location(data[x].split()))
         loc.append(d)
     return loc
+
+def getgempa():
+    data = fetchdatasoup(fetchdata())
+    return data
+
+def getmagnitude(data):
+    return data[3]
+
+
+#def magdata(data):
+    #scale = {}
+    #for i in range(len(data)):
+    #    d = getmagnitude(data).split()[i].encode('ascii')
+    #    loc = location(data).split()[i].encode('ascii')
+    #    scale[loc] = d
+
+    #return scale
+
 
 def occurance(data):
     # usage: occurance(getalllocations(getgempa()))
