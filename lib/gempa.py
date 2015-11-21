@@ -14,7 +14,7 @@ try:
     from bs4 import BeautifulSoup as bs
     from urllib2 import urlopen
 except ImportError:
-    raise Exception('see requirements.txt!')
+    raise ImportError('see requirements.txt!')
 
 def fetchdata():
     url = 'http://www.bmkg.go.id/BMKG_Pusat/Kualitas_Udara/Informasi_Partikulat.bmkg'
@@ -23,7 +23,7 @@ def fetchdata():
 
 def get(data):
     s = bs(data)
-    data = s.find("div",{"class":"panel panel-default row"})
+    data = s.find("div",{"class":"panel-default row"})
     return data.text.split()
 
 def datagempa():
